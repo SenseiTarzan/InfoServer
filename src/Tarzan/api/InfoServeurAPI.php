@@ -23,7 +23,7 @@ class InfoServeurAPI
             $this->getUiInfoServer($player, $merge);
         });
 
-        $ui->setTitle("InfoServeur Index ");
+        $ui->setTitle("InfoServeur Index");
         $ui->addInput("ip:", Server::getInstance()->getIp(), Server::getInstance()->getIp());
         $ui->addInput("port:", Server::getInstance()->getPort(), Server::getInstance()->getPort());
         $player->sendForm($ui);
@@ -32,13 +32,13 @@ class InfoServeurAPI
 
     public function getUiInfoServer(Player $player, string $address)
     {
-        $arrContextOptions = array(
+        $ssl = array(
             "ssl" => array(
                 "verify_peer" => false,
                 "verify_peer_name" => false,
             ),
         );
-        $mcapi = json_decode(file_get_contents("https://api.mcsrvstat.us/2/{$address}", false, stream_context_create($arrContextOptions)),JSON_OBJECT_AS_ARRAY);
+        $mcapi = json_decode(file_get_contents("https://api.mcsrvstat.us/2/{$address}", false, stream_context_create($ssl)),JSON_OBJECT_AS_ARRAY);
         $ui = new SimpleForm(function (Player $player, $data) use ($mcapi) {
             if ($data === null) {
                 return;
