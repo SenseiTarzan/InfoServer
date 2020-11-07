@@ -23,6 +23,7 @@ class InfoServeurAPI
             $this->getUiInfoServer($player, $merge);
         });
 
+        $ui->setTitle("InfoServeur Index ");
         $ui->addInput("ip:", Server::getInstance()->getIp(), Server::getInstance()->getIp());
         $ui->addInput("port:", Server::getInstance()->getPort(), Server::getInstance()->getPort());
         $player->sendForm($ui);
@@ -43,6 +44,7 @@ class InfoServeurAPI
                 return;
             }
         });
+        $ui->setTitle("InfoServeur of " . $mcapi["hostname"]);
         $playerlist = isset($mcapi["players"]["list"]) ? count($mcapi["players"]["list"]) === 0 ? "" : implode("\n§f-§4",$mcapi["players"]["list"]) : "";
         $pluginlist =  isset($mcapi["plugins"]["raw"]) ? count($mcapi["plugins"]["raw"]) === 0 ? "" : implode("\n§f-§4",$mcapi["plugins"]["raw"]) : "";
         $plugincount =  isset($mcapi["plugins"]["raw"]) ? count($mcapi["plugins"]["raw"]): "cache";
