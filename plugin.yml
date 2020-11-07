@@ -1,0 +1,5 @@
+name: InfoServer
+author: SenseiTarzan
+version: 3.0.0
+main: Tarzan\Main
+api: 3.0.0
